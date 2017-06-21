@@ -30,7 +30,7 @@ public class JsLibParserTest {
         List<String> parsedLibraries = jsLibParser.parse(input);
 
         // Then
-        assertThat(parsedLibraries).containsExactlyInAnyOrder("ylc_1.9");
+        assertThat(parsedLibraries).containsExactly("ylc_1.9");
     }
 
     @Test
@@ -51,24 +51,16 @@ public class JsLibParserTest {
         List<String> parsedLibraries = jsLibParser.parse(input);
 
         // Then
-        assertThat(parsedLibraries).containsExactlyInAnyOrder("ylc_1.9");
+        assertThat(parsedLibraries).containsExactly("ylc_1.9");
     }
 
     @Test
     public void should_parse_javascript_file_names() throws IOException, URISyntaxException {
         // Given
-        final StringJoiner joiner = new StringJoiner("");
-        readAllLines(
-                Paths.get(
-                        getClass()
-                                .getClassLoader()
-                                .getResource("afile.html")
-                                .toURI()
-                )
-        ).forEach(line -> joiner.add(line));
+        String htmlFileContent = TestFiles.read("afile.html");
 
         // When
-        List<String> parsedLibraries = jsLibParser.parse(joiner.toString());
+        List<String> parsedLibraries = jsLibParser.parse(htmlFileContent);
 
         // Then
         assertThat(parsedLibraries).containsExactlyInAnyOrder(
