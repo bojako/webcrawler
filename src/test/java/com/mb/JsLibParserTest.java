@@ -5,11 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.StringJoiner;
 
-import static java.nio.file.Files.readAllLines;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JsLibParserTest {
